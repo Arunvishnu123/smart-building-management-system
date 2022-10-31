@@ -1,21 +1,35 @@
 package com.project.smartbuidingapp.Building;
 
-public class BuildingDTO {
+import javax.persistence.*;
 
+@Entity
+@Table(name = "Building")
+
+public class BuildingEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
+    @Column(nullable = false, length = 30)
     private Long buildingID ;
+    @Column(nullable = false, length = 30)
     private String buildingName;
+    @Column(nullable = false, length = 30)
     private String buildingAddress;
+    @Column(nullable = false, length = 30)
     private String buildingOwner;
+    @Column(nullable = false, length = 30)
     private String storeyNumber;
+    @Column(nullable = false, length = 30)
     private String buildingType;
+    @Column(nullable = false, length = 30)
     private Float  buildingSize;
+    @Column(nullable = false, length = 30)
     private Integer buildingAge;
 
-    public BuildingDTO() {
+    public BuildingEntity() {
     }
 
-    public BuildingDTO(Long ID, Long buildingID, String buildingName, String buildingAddress, String buildingOwner, String storeyNumber, String buildingType, Float buildingSize, Integer buildingAge) {
+    public BuildingEntity(Long ID, Long buildingID, String buildingName, String buildingAddress, String buildingOwner, String storeyNumber, String buildingType, Float buildingSize, Integer buildingAge) {
         this.ID = ID;
         this.buildingID = buildingID;
         this.buildingName = buildingName;
@@ -27,22 +41,8 @@ public class BuildingDTO {
         this.buildingAge = buildingAge;
     }
 
-    public BuildingDTO(BuildingEntity buildingEntity) {
-        this.ID = buildingEntity.getID();
-        this.buildingID = buildingEntity.getBuildingID();
-        this.buildingName = buildingEntity.getBuildingName();
-        this.buildingAddress = buildingEntity.getBuildingAddress();
-        this.buildingOwner = buildingEntity.getBuildingOwner();
-        this.storeyNumber = buildingEntity.getStoreyNumber();
-        this.buildingType = buildingEntity.getBuildingType();
-        this.buildingSize = buildingEntity.getBuildingSize();
-        this.buildingAge = buildingEntity.getBuildingAge();
+    public BuildingEntity(BuildingDTO dto) {
     }
-
-
-
-
-
 
     public Long getID() {
         return ID;
