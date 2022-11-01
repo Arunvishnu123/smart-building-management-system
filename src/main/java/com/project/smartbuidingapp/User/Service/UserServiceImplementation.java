@@ -6,20 +6,42 @@ import com.project.smartbuidingapp.User.Repository.RoleRepository;
 import com.project.smartbuidingapp.User.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
 @Slf4j
-public class UserServiceImplementation implements UserService {
+public class UserServiceImplementation implements UserService, UserDetailsService {
 
     private  final UserRepository userRepository;
     private  final RoleRepository roleRepository;
 
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        AppUser user = userRepository.findByUsername(username);
+        if(user==null){
+            log.error("user not found in the Database");
+            throw new UsernameNotFoundException("User not found in the database");
+        }else{
+            log.info("User found in the database - {}", username);
+        }
+
+        Collection<SimpleGrantedAuthority> authorites = new ArrayList<>();
+        user.getRoles().forEach(role ->{
+            authorites.add(new SimpleGrantedAuthority(role.getName()));
+        });
+        return new org.springframework.security.core.userdetails.User(user.getUsername(),user.getPassword(),authorites);
+    }
     @Override
     public AppUser saveUser(AppUser appUser) {
         log.info("Saving new user {} to the database", appUser.getName());
@@ -52,4 +74,6 @@ public class UserServiceImplementation implements UserService {
         log.info("get all users");
         return userRepository.findAll();
     }
+
+
 }

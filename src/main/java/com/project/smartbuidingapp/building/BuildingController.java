@@ -1,12 +1,14 @@
 package com.project.smartbuidingapp.Building;
 
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@SecurityRequirement(name = "javainuseapi")
 @RequestMapping(path = "api/v1")
 public class BuildingController {
 

@@ -3,6 +3,7 @@ package com.project.smartbuidingapp.User.Controller;
 import com.project.smartbuidingapp.User.Model.AppUser;
 import com.project.smartbuidingapp.User.Model.Role;
 import com.project.smartbuidingapp.User.Service.UserService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -13,13 +14,17 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/auth")
+@SecurityRequirement(name = "javainuseapi")
 @RequiredArgsConstructor
 public class UserController {
 
 
     private final UserService userService ;
 
+    @PostMapping("/login")
+    public String login(){
+        return "loign";
+    }
     @GetMapping("/users")
     public ResponseEntity<List<AppUser>>getUser(){
         return  ResponseEntity.ok().body(userService.getUser());
@@ -42,6 +47,8 @@ public class UserController {
         userService.addRoleToUser(role.getUsername(), role.getRoleName());
         return  ResponseEntity.ok().build();
     }
+
+
 
 
 }
