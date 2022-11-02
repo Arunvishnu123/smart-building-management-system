@@ -39,11 +39,11 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
                http.csrf().disable();
                http.sessionManagement().sessionCreationPolicy(STATELESS);
-               http.authorizeRequests().antMatchers("/login").permitAll();
-               http.authorizeRequests().antMatchers(GET, "api/v1/**").hasAnyAuthority("USER");
-               http.authorizeRequests().antMatchers(POST, "api/v1/**").hasAnyAuthority("ADMIN");
-               http.authorizeRequests().antMatchers(PUT, "api/v1/**").hasAnyAuthority("USER");
-               http.authorizeRequests().antMatchers(DELETE, "api/v1/**").hasAnyAuthority("USER");
+               http.authorizeRequests().antMatchers(POST,"/login").permitAll();
+               http.authorizeRequests().antMatchers(GET, "/api/v1/**").hasAuthority("USER");
+               http.authorizeRequests().antMatchers(POST, "/api/v1/**").hasAnyAuthority("ADMIN");
+               http.authorizeRequests().antMatchers(PUT, "/api/v1/**").hasAnyAuthority("USER");
+               http.authorizeRequests().antMatchers(DELETE, "/api/v1/**").hasAnyAuthority("USER");
                http.authorizeRequests().anyRequest().permitAll();
                http.addFilter(new CustomAuthenticationFilter(authManagerBuilder.getOrBuild()));
 
