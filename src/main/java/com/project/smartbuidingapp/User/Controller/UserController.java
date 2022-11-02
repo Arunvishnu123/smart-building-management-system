@@ -1,6 +1,7 @@
 package com.project.smartbuidingapp.User.Controller;
 
 import com.project.smartbuidingapp.User.Model.AppUser;
+import com.project.smartbuidingapp.User.Model.LoginUser;
 import com.project.smartbuidingapp.User.Model.Role;
 import com.project.smartbuidingapp.User.Service.UserService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -22,8 +23,8 @@ public class UserController {
     private final UserService userService ;
 
     @PostMapping("/login")
-    public String login(){
-        return "loign";
+    public String login(@RequestBody LoginUser loginUser){
+        return "login";
     }
     @GetMapping("/users")
     public ResponseEntity<List<AppUser>>getUser(){
