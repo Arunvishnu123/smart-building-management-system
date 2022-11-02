@@ -3,6 +3,7 @@ package com.project.smartbuidingapp.User.Controller;
 import com.project.smartbuidingapp.User.Model.AppUser;
 import com.project.smartbuidingapp.User.Model.LoginUser;
 import com.project.smartbuidingapp.User.Model.Role;
+import com.project.smartbuidingapp.User.Model.RoletoUserForm;
 import com.project.smartbuidingapp.User.Service.UserService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.Data;
@@ -32,24 +33,24 @@ public class UserController {
         return "logout successfull";
     }
     @GetMapping("/users")
-    public ResponseEntity<List<AppUser>>getUser(){
+    public ResponseEntity<List<AppUser>> getUser(){
         return  ResponseEntity.ok().body(userService.getUser());
     }
 
     @PostMapping("/users/save")
-    public ResponseEntity<AppUser>saveUser(@RequestBody AppUser appUser){
+    public ResponseEntity<AppUser>  saveUser(@RequestBody AppUser appUser){
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/auth/user/save").toUriString());
         return  ResponseEntity.created(uri).body(userService.saveUser(appUser));
     }
 
     @PostMapping("/role/save")
-    public ResponseEntity<Role>saveRole(@RequestBody Role role){
+    public ResponseEntity<Role> saveRole(@RequestBody Role role){
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/auth/role/save").toUriString());
         return  ResponseEntity.created(uri).body(userService.saveRole(role));
     }
 
     @PostMapping("/role/addtouser")
-    public ResponseEntity<?>addRoleToUser(@RequestBody RoletoUserForm role){
+    public ResponseEntity<?> addRoleToUser(@RequestBody RoletoUserForm role){
         userService.addRoleToUser(role.getUsername(), role.getRoleName());
         return  ResponseEntity.ok().build();
     }
@@ -59,8 +60,5 @@ public class UserController {
 
 }
 
-@Data
-class  RoletoUserForm {
-    private String username;
-    private  String roleName;
-}
+
+
