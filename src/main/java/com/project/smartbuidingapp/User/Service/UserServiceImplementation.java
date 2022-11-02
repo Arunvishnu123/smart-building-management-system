@@ -21,7 +21,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Transactional
-@Slf4j
+
 public class UserServiceImplementation implements UserService, UserDetailsService {
 
     private  final UserRepository userRepository;
@@ -33,10 +33,10 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         AppUser user = userRepository.findByUsername(username);
         if(user==null){
-            log.error("user not found in the Database");
+           // log.error("user not found in the Database");
             throw new UsernameNotFoundException("User not found in the database");
         }else{
-            log.info("User found in the database - {}", username);
+          //  log.info("User found in the database - {}", username);
         }
 
         Collection<SimpleGrantedAuthority> authorites = new ArrayList<>();
@@ -48,19 +48,19 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
     @Override
     public AppUser saveUser(AppUser appUser) {
         appUser.setPassword(passwordEncoder.encode(appUser.getPassword()));
-        log.info("Saving new user {} to the database", appUser.getName());
+       // log.info("Saving new user {} to the database", appUser.getName());
         return userRepository.save(appUser);
     }
 
     @Override
     public Role saveRole(Role role) {
-        log.info("Saving new role {} to the database", role.getName());
+       // log.info("Saving new role {} to the database", role.getName());
         return roleRepository.save(role);
     }
 
     @Override
     public void addRoleToUser(String userName, String roleName) {
-        log.info("adding role{} to user {}", roleName,  userName);
+       // log.info("adding role{} to user {}", roleName,  userName);
         AppUser user = userRepository.findByUsername(userName);
         Role role = roleRepository.findByName(roleName);
         user.getRoles().add(role);
@@ -69,13 +69,13 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
 
     @Override
     public AppUser getUser(String userName) {
-        log.info("fetching user {}", userName);
+      //  log.info("fetching user {}", userName);
         return userRepository.findByUsername((userName));
     }
 
     @Override
     public List<AppUser> getUser() {
-        log.info("get all users");
+       // log.info("get all users");
         return userRepository.findAll();
     }
 
