@@ -26,6 +26,11 @@ public class UserController {
     public String login( LoginUser loginUser){
         return "login";
     }
+
+    @PostMapping("/logout")
+    public String logout( ){
+        return "logout successfull";
+    }
     @GetMapping("/users")
     public ResponseEntity<List<AppUser>>getUser(){
         return  ResponseEntity.ok().body(userService.getUser());

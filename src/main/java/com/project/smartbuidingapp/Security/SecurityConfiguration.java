@@ -54,6 +54,8 @@ public class SecurityConfiguration {
                http.authorizeRequests().antMatchers(PUT, "/api/v1/**").hasAnyAuthority("USER");
                http.authorizeRequests().antMatchers(DELETE, "/api/v1/**").hasAnyAuthority("USER");
                http.authorizeRequests().anyRequest().permitAll();
+               http.authorizeRequests().and();
+               http.logout().logoutUrl("/logout").logoutSuccessUrl("/logout");
                http.addFilter(new CustomAuthenticationFilter(authManagerBuilder.getOrBuild()));
                http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
                return http.build();
