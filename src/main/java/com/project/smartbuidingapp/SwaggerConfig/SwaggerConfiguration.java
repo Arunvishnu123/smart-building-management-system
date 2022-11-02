@@ -25,11 +25,11 @@ public class SwaggerConfiguration {
 
     private ApiInfo apiInfo(){
         return new ApiInfo(
-                "Spring Boot Blog REST APIs",
-                "Spring Boot Blog REST API Documentation",
+                "Smart Building Management System",
+                "Smart Building Management System REST API Documentation",
                 "1",
                 "Terms of service",
-                new Contact("Ramesh Fadatare", "www.javaguides.net", "ramesh@gmail.com"),
+                new Contact("Arun Raveendran Nair Sheela", "https://arun-raveendran-nair-sheela.netlify.app/", "arun.raveendran@emse.com"),
                 "License of API",
                 "API license URL",
                 Collections.emptyList()
@@ -38,6 +38,7 @@ public class SwaggerConfiguration {
 
     @Bean
     public Docket api(){
+
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .securityContexts(Arrays.asList(securityContext()))
@@ -47,6 +48,8 @@ public class SwaggerConfiguration {
                 .paths(PathSelectors.any())
                 .build();
     }
+
+
 
     private SecurityContext securityContext(){
         return SecurityContext.builder().securityReferences(defaultAuth()).build();

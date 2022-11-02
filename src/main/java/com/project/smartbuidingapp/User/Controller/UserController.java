@@ -23,7 +23,7 @@ public class UserController {
     private final UserService userService ;
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginUser loginUser){
+    public String login( LoginUser loginUser){
         return "login";
     }
     @GetMapping("/users")
