@@ -1,16 +1,20 @@
 package com.project.smartbuidingapp.Building;
 
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
+@Service
+@AllArgsConstructor
 public class BuildingService {
 
-    @Autowired
-    BuildingRepository buildingRepository;
+
+    private final BuildingRepository buildingRepository;
 
     public List<BuildingDTO> getAllBuildings() {
         return buildingRepository.findAll().stream().map(BuildingDTO::new).collect(Collectors.toList());
