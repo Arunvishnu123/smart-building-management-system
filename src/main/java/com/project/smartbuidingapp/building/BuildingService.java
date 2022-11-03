@@ -6,14 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 @AllArgsConstructor
 public class BuildingService {
 
-
+@Autowired
     private final BuildingRepository buildingRepository;
 
     public List<BuildingDTO> getAllBuildings() {
@@ -28,9 +30,11 @@ public class BuildingService {
         buildingRepository.deleteById(id);
     }
 
-    public BuildingDTO addNewBuilding(BuildingDTO newDTO) {
+    public BuildingEntity addNewBuilding(BuildingDTO newDTO) {
+
         BuildingEntity buildingEntity = null;
         buildingRepository.save(new BuildingEntity(newDTO.getID(), newDTO.getBuildingID(), newDTO.getBuildingName(), newDTO.getBuildingAddress(), newDTO.getBuildingOwner(), newDTO.getStoreyNumber(), newDTO.getBuildingType(), newDTO.getBuildingSize(), newDTO.getBuildingAge()));
-        return newDTO;
+
+        return buildingEntity;
     }
 }

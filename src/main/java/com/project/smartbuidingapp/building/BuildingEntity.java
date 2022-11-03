@@ -6,30 +6,30 @@ import javax.persistence.*;
 @Table(name = "Building")
 
 public class BuildingEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
-    @Column(nullable = false, length = 30)
+
     private Long buildingID ;
-    @Column(nullable = false, length = 30)
+
     private String buildingName;
-    @Column(nullable = false, length = 30)
+
     private String buildingAddress;
-    @Column(nullable = false, length = 30)
+
     private String buildingOwner;
-    @Column(nullable = false, length = 30)
+
     private String storeyNumber;
-    @Column(nullable = false, length = 30)
+
     private String buildingType;
-    @Column(nullable = false, length = 30)
-    private Float  buildingSize;
-    @Column(nullable = false, length = 30)
+
+    private Long  buildingSize;
+
     private Integer buildingAge;
 
     public BuildingEntity() {
     }
 
-    public BuildingEntity(Long ID, Long buildingID, String buildingName, String buildingAddress, String buildingOwner, String storeyNumber, String buildingType, Float buildingSize, Integer buildingAge) {
+    public BuildingEntity(Long ID, Long buildingID, String buildingName, String buildingAddress, String buildingOwner, String storeyNumber, String buildingType, Long buildingSize, Integer buildingAge) {
         this.ID = ID;
         this.buildingID = buildingID;
         this.buildingName = buildingName;
@@ -100,11 +100,11 @@ public class BuildingEntity {
         this.buildingType = buildingType;
     }
 
-    public Float getBuildingSize() {
+    public Long getBuildingSize() {
         return buildingSize;
     }
 
-    public void setBuildingSize(Float buildingSize) {
+    public void setBuildingSize(Long buildingSize) {
         this.buildingSize = buildingSize;
     }
 

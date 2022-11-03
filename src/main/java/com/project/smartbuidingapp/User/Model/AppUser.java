@@ -14,7 +14,7 @@ import java.util.Collection;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Table(name = "Users")
 public class AppUser {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,6 +25,10 @@ public class AppUser {
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles = new ArrayList<>();
 
-
-
+    public AppUser(Long id, String name, String username, String password) {
+        this.id = id;
+        this.name = name;
+        this.username = username;
+        this.password = password;
+    }
 }

@@ -1,9 +1,6 @@
 package com.project.smartbuidingapp.User.Controller;
 
-import com.project.smartbuidingapp.User.Model.AppUser;
-import com.project.smartbuidingapp.User.Model.LoginUser;
-import com.project.smartbuidingapp.User.Model.Role;
-import com.project.smartbuidingapp.User.Model.RoletoUserForm;
+import com.project.smartbuidingapp.User.Model.*;
 import com.project.smartbuidingapp.User.Service.UserService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.Data;
@@ -38,14 +35,14 @@ public class UserController {
     }
 
     @PostMapping("/users/save")
-    public ResponseEntity<AppUser>  saveUser(@RequestBody AppUser appUser){
-        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/auth/user/save").toUriString());
-        return  ResponseEntity.created(uri).body(userService.saveUser(appUser));
+    public ResponseEntity<AppUser>  saveUser(AppUserDTO appUserDTO){
+        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/user/save").toUriString());
+        return ResponseEntity.created(uri).body(userService.saveUser(appUserDTO));
     }
 
     @PostMapping("/role/save")
     public ResponseEntity<Role> saveRole(@RequestBody Role role){
-        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/auth/role/save").toUriString());
+        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/role/save").toUriString());
         return  ResponseEntity.created(uri).body(userService.saveRole(role));
     }
 
@@ -59,6 +56,5 @@ public class UserController {
 
 
 }
-
 
 

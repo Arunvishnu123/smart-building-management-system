@@ -1,6 +1,8 @@
 package com.project.smartbuidingapp.User.Service;
 
+import com.project.smartbuidingapp.Building.BuildingEntity;
 import com.project.smartbuidingapp.User.Model.AppUser;
+import com.project.smartbuidingapp.User.Model.AppUserDTO;
 import com.project.smartbuidingapp.User.Model.Role;
 import com.project.smartbuidingapp.User.Repository.RoleRepository;
 import com.project.smartbuidingapp.User.Repository.UserRepository;
@@ -46,10 +48,12 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
         return new org.springframework.security.core.userdetails.User(user.getUsername(),user.getPassword(),authorites);
     }
     @Override
-    public AppUser saveUser(AppUser appUser) {
+    public AppUser saveUser(AppUserDTO appUser) {
         appUser.setPassword(passwordEncoder.encode(appUser.getPassword()));
        // log.info("Saving new user {} to the database", appUser.getName());
-        return userRepository.save(appUser);
+        AppUser appUser1 = null;
+        userRepository.save(new AppUser(appUser.getId(), appUser.getName(), appUser.getUsername(), appUser.getPassword()));
+        return appUser1;
     }
 
     @Override

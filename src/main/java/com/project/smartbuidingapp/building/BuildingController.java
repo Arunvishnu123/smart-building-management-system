@@ -1,10 +1,14 @@
 package com.project.smartbuidingapp.Building;
 
 
+import com.project.smartbuidingapp.User.Model.Role;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -12,14 +16,15 @@ import java.util.List;
 @RequestMapping(path = "api/v1")
 public class BuildingController {
 
-    @Autowired
+@Autowired
     private BuildingService buildingService ;
 
     @PostMapping("/building")
-    public BuildingDTO addNewBuilding(@RequestBody BuildingDTO dto){
-        System.out.println(dto);
-        buildingService.addNewBuilding(dto);
-        return dto;
+    public ResponseEntity<BuildingEntity> addNewBuilding(@RequestBody BuildingDTO dto){
+        System.out.println("Building data " + dto);
+        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/v1/building").toUriString());
+
+        return ResponseEntity.created(uri).body(buildingService.addNewBuilding(dto));
     }
 
 

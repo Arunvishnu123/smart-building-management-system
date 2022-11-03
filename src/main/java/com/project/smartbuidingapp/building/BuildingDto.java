@@ -9,13 +9,13 @@ public class BuildingDTO {
     private String buildingOwner;
     private String storeyNumber;
     private String buildingType;
-    private Float  buildingSize;
+    private Long  buildingSize;
     private Integer buildingAge;
 
     public BuildingDTO() {
     }
 
-    public BuildingDTO(Long ID, Long buildingID, String buildingName, String buildingAddress, String buildingOwner, String storeyNumber, String buildingType, Float buildingSize, Integer buildingAge) {
+    public BuildingDTO(Long ID, Long buildingID, String buildingName, String buildingAddress, String buildingOwner, String storeyNumber, String buildingType, Long buildingSize, Integer buildingAge) {
         this.ID = ID;
         this.buildingID = buildingID;
         this.buildingName = buildingName;
@@ -100,11 +100,11 @@ public class BuildingDTO {
         this.buildingType = buildingType;
     }
 
-    public Float getBuildingSize() {
+    public Long getBuildingSize() {
         return buildingSize;
     }
 
-    public void setBuildingSize(Float buildingSize) {
+    public void setBuildingSize(Long buildingSize) {
         this.buildingSize = buildingSize;
     }
 

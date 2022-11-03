@@ -40,17 +40,18 @@ public class SecurityConfiguration {
     }
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().antMatchers("/v2/**", "/swagger-resources/**", "/configuration/**", "/swagger*/**", "/webjars/**", "/swagger-ui/**", "/v3/api-docs/**", "/proxy/**");
+        return (web) -> web.ignoring().antMatchers("/v2/**","/h2-console/**", "/swagger-resources/**", "/configuration/**", "/swagger*/**", "/webjars/**", "/swagger-ui/**", "/v3/api-docs/**", "/proxy/**");
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
                http.csrf().disable();
+               http.headers().frameOptions().disable();
                http.sessionManagement().sessionCreationPolicy(STATELESS);
-               http.authorizeRequests().antMatchers("/v2/**", "/swagger-resources/**", "/configuration/**", "/swagger*/**", "/webjars/**", "/swagger-ui/**", "/v3/api-docs/**", "/proxy/**").permitAll();
+               http.authorizeRequests().antMatchers("/v2/**","/h2-console/**", "/swagger-resources/**", "/configuration/**", "/swagger*/**", "/webjars/**", "/swagger-ui/**", "/v3/api-docs/**", "/proxy/**").permitAll();
                http.authorizeRequests().antMatchers("/login").permitAll();
                http.authorizeRequests().antMatchers(GET, "/api/v1/**").hasAnyAuthority("USER");
-               http.authorizeRequests().antMatchers(POST, "/api/v1/**").hasAnyAuthority("ADMIN");
+               //http.authorizeRequests().antMatchers(POST, "/api/v1/**").hasAnyAuthority("ADMIN");
                http.authorizeRequests().antMatchers(PUT, "/api/v1/**").hasAnyAuthority("USER");
                http.authorizeRequests().antMatchers(DELETE, "/api/v1/**").hasAnyAuthority("USER");
                http.authorizeRequests().anyRequest().permitAll();

@@ -6,4 +6,5 @@ import lombok.Data;
 public class RoletoUserForm {
     private String username;
     private  String roleName;
+
 }
