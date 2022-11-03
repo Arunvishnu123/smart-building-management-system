@@ -48,7 +48,7 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
         return new org.springframework.security.core.userdetails.User(user.getUsername(),user.getPassword(),authorites);
     }
     @Override
-    public AppUser saveUser(AppUserDTO appUser) {
+    public AppUser saveUser(AppUser appUser) {
         appUser.setPassword(passwordEncoder.encode(appUser.getPassword()));
        // log.info("Saving new user {} to the database", appUser.getName());
         AppUser appUser1 = null;

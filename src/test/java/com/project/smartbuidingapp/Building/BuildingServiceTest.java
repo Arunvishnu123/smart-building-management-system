@@ -10,7 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.mockito.Mockito.verify;
-/*
+
 @ExtendWith(MockitoExtension.class)
 public class BuildingServiceTest {
 
@@ -31,4 +31,3 @@ public class BuildingServiceTest {
               verify(buildingRepository).findAll();
     }
 }
-*/

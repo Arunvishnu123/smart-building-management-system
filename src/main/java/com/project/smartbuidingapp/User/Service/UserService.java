@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface UserService {
 
-    AppUser saveUser(AppUserDTO appUser);
+    AppUser saveUser(AppUser appUser);
     Role saveRole(Role role);
     void addRoleToUser (String userName, String roleName);
     AppUser getUser(String userName);
