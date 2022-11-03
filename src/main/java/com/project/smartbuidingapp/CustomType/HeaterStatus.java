@@ -1,2 +1,5 @@
-package com.project.smartbuidingapp.CustomType;public class HeaterStatus {
-}
+package com.project.smartbuidingapp.CustomType;
+
+public enum HeaterStatus{
+ON , OFF
+        }

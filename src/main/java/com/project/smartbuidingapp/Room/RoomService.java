@@ -1,4 +1,4 @@
 package com.project.smartbuidingapp.Room;
 
-public class Room {
+public class RoomService {
 }

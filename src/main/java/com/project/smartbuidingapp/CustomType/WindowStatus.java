@@ -1,2 +1,5 @@
-package com.project.smartbuidingapp.CustomType;public class WindowStatus {
+package com.project.smartbuidingapp.CustomType;
+
+public enum WindowStatus {
+    OPEN , CLOSE
 }

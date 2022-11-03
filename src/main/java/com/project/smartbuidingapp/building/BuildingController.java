@@ -19,17 +19,17 @@ public class BuildingController {
 @Autowired
     private BuildingService buildingService ;
 
-    @PostMapping("/building")
-    public ResponseEntity<BuildingEntity> addNewBuilding(@RequestBody BuildingDTO dto){
+    @PostMapping("/building/new")
+    public ResponseEntity<BuildingDTO> addNewBuilding(@RequestBody BuildingDTO dto){
         System.out.println("Building data " + dto);
-        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/v1/building").toUriString());
+        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/v1/building/new").toUriString());
 
         return ResponseEntity.created(uri).body(buildingService.addNewBuilding(dto));
     }
 
 
     @DeleteMapping("/buildings/{buildingID}")
-    public void deleteBuilding(@PathVariable Long buildingID){
+    public void deleteBuilding(@PathVariable("buildingID") Long buildingID){
         buildingService.deleteBuildingByID(buildingID);
     }
 
@@ -37,6 +37,7 @@ public class BuildingController {
     public List<BuildingDTO> getAllBuildings(){
         return buildingService.getAllBuildings();
     }
+
     @GetMapping("/buildings/{buildingID}")
     public BuildingDTO getBuildingByID(@PathVariable("buildingID") Long buildingID){
         return buildingService.getBuildingByID(buildingID);

@@ -1,6 +1,7 @@
-package com.project.smartbuidingapp.Heater;
+package com.project.smartbuidingapp.Window;
 
 import com.project.smartbuidingapp.CustomType.HeaterStatus;
+import com.project.smartbuidingapp.CustomType.WindowStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,18 +9,17 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Heater")
+@Table(name = "Windows")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class HeaterEntity {
+public class WindowEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
     private String name ;
-    private HeaterStatus heaterStatus ;
+    private WindowStatus windowStatus ;
     private Long roomID ;
-    private Float currentTemperature ;
-    private Float targetTemperature;
 
 }

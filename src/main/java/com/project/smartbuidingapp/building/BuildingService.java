@@ -30,11 +30,11 @@ public class BuildingService {
         buildingRepository.deleteById(id);
     }
 
-    public BuildingEntity addNewBuilding(BuildingDTO newDTO) {
+    public BuildingDTO addNewBuilding(BuildingDTO newDTO) {
 
         BuildingEntity buildingEntity = null;
         buildingRepository.save(new BuildingEntity(newDTO.getID(), newDTO.getBuildingID(), newDTO.getBuildingName(), newDTO.getBuildingAddress(), newDTO.getBuildingOwner(), newDTO.getStoreyNumber(), newDTO.getBuildingType(), newDTO.getBuildingSize(), newDTO.getBuildingAge()));
 
-        return buildingEntity;
+        return newDTO;
     }
 }

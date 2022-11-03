@@ -6,5 +6,15 @@ import java.util.List;
 
 public interface HeaterService {
 
-    List<BuildingDTO> getAllHeaters();
+    List<HeaterDTO> getAllHeaters();
+    HeaterDTO getHeatersById(Long Id);
+    void deleteHeaterByID(Long Id);
+    HeaterEntity changeHeaterStatusById(Long ID);
+
+    List<HeaterDTO> getHeatersFromRoomID(Long roomID);
+
+    HeaterDTO addNewHeater(HeaterDTO heaterDTO);
+
+
+
 }
