@@ -1,6 +1,6 @@
 package com.project.smartbuidingapp.Heater;
 
-import com.project.smartbuidingapp.Building.BuildingDTO;
+import com.project.smartbuidingapp.Building.BuildingDto;
 
 import java.util.List;
 
