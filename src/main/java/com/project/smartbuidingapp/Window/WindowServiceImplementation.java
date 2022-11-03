@@ -1,9 +1,6 @@
 package com.project.smartbuidingapp.Window;
 
-import com.project.smartbuidingapp.CustomType.HeaterStatus;
 import com.project.smartbuidingapp.CustomType.WindowStatus;
-import com.project.smartbuidingapp.Heater.HeaterDTO;
-import com.project.smartbuidingapp.Heater.HeaterEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,13 +20,13 @@ public class WindowServiceImplementation implements WindowService {
 
 
     @Override
-    public List<WindowDTO> getAllWindows() {
-        return windowRepository.findAll().stream().map(WindowDTO::new).collect(Collectors.toList());
+    public List<WindowDto> getAllWindows() {
+        return windowRepository.findAll().stream().map(WindowDto::new).collect(Collectors.toList());
     }
 
     @Override
-    public WindowDTO getWindowById(Long Id) {
-        return windowRepository.findById(Id).map(WindowDTO::new).orElse(null);
+    public WindowDto getWindowById(Long Id) {
+        return windowRepository.findById(Id).map(WindowDto::new).orElse(null);
     }
 
     @Override
@@ -45,12 +42,12 @@ public class WindowServiceImplementation implements WindowService {
     }
 
     @Override
-    public List<WindowDTO> getWindowsFromRoomID(Long roomID) {
-        return windowRepository.findByRoomID(roomID).stream().map(WindowDTO::new).collect(Collectors.toList());
+    public List<WindowDto> getWindowsFromRoomID(Long roomID) {
+        return windowRepository.findByRoomID(roomID).stream().map(WindowDto::new).collect(Collectors.toList());
     }
 
     @Override
-    public WindowDTO addNewWindow(WindowDTO windowDTO) {
+    public WindowDto addNewWindow(WindowDto windowDTO) {
         WindowEntity window = null;
         windowRepository.save(new WindowEntity(windowDTO.getID(),windowDTO.getName(),windowDTO.getWindowStatus(),windowDTO.getRoomID()));
 

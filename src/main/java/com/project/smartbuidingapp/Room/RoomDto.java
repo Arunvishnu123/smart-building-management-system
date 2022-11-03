@@ -1,19 +1,7 @@
 package com.project.smartbuidingapp.Room;
 
-import com.project.smartbuidingapp.Heater.HeaterEntity;
-import com.project.smartbuidingapp.Window.WindowEntity;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Set;
-
-
-public class RoomDTO {
+public class RoomDto {
     private Long ID;
     private String roomName;
     private Long roomID;
@@ -26,7 +14,7 @@ public class RoomDTO {
     private Collection<HeaterEntity> heaters = new ArrayList<>();
 */
 
-    public RoomDTO(RoomEntity roomEntity) {
+    public RoomDto(RoomEntity roomEntity) {
         this.ID = roomEntity.getID();
         this.roomName = roomEntity.getRoomName();
         this.roomID = roomEntity.getRoomID();
@@ -34,10 +22,10 @@ public class RoomDTO {
         this.buildingID = roomEntity.getBuildingID();
     }
 
-    public RoomDTO() {
+    public RoomDto() {
     }
 
-    public RoomDTO(Long ID, String roomName, Long roomID, float roomTemperature, Long buildingID) {
+    public RoomDto(Long ID, String roomName, Long roomID, float roomTemperature, Long buildingID) {
         this.ID = ID;
         this.roomName = roomName;
         this.roomID = roomID;

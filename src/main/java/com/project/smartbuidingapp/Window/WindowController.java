@@ -17,21 +17,21 @@ public class WindowController {
 
 
     @PostMapping("/window/new")
-    public ResponseEntity<WindowDTO> addNewWindow(@RequestBody WindowDTO dto){
+    public ResponseEntity<WindowDto> addNewWindow(@RequestBody WindowDto dto){
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/v1/Window/new").toUriString());
         return ResponseEntity.created(uri).body(windowService.addNewWindow(dto));
     }
     @GetMapping("/windows")
-    public List<WindowDTO> getAllWindows(){
+    public List<WindowDto> getAllWindows(){
         return windowService.getAllWindows();
     }
     @GetMapping("/windows/{roomID}")
-    public List<WindowDTO> getAllWindowsInSameRoom(@PathVariable("roomID") Long roomID){
+    public List<WindowDto> getAllWindowsInSameRoom(@PathVariable("roomID") Long roomID){
         return windowService.getWindowsFromRoomID(roomID);
     }
 
     @GetMapping("/window/{windowID}")
-    public WindowDTO getWindowByID(@PathVariable("windowID") Long windowID){
+    public WindowDto getWindowByID(@PathVariable("windowID") Long windowID){
         return windowService.getWindowById(windowID);
     }
 

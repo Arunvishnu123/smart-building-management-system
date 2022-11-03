@@ -20,13 +20,13 @@ public class HeaterServiceImplementation implements HeaterService{
     }
 
     @Override
-    public List<HeaterDTO> getAllHeaters() {
-        return  heaterRepository.findAll().stream().map(HeaterDTO::new).collect(Collectors.toList());
+    public List<HeaterDto> getAllHeaters() {
+        return  heaterRepository.findAll().stream().map(HeaterDto::new).collect(Collectors.toList());
     }
 
     @Override
-    public HeaterDTO getHeatersById(Long Id) {
-        return  heaterRepository.findById(Id).map(HeaterDTO::new).orElse(null);
+    public HeaterDto getHeatersById(Long Id) {
+        return  heaterRepository.findById(Id).map(HeaterDto::new).orElse(null);
     }
 
     @Override
@@ -47,12 +47,12 @@ public class HeaterServiceImplementation implements HeaterService{
 
 
       @Override
-    public List<HeaterDTO> getHeatersFromRoomID(Long roomID) {
-        return heaterRepository.findByRoomID(roomID).stream().map(HeaterDTO::new).collect(Collectors.toList());
+    public List<HeaterDto> getHeatersFromRoomID(Long roomID) {
+        return heaterRepository.findByRoomID(roomID).stream().map(HeaterDto::new).collect(Collectors.toList());
    }
 
     @Override
-    public HeaterDTO addNewHeater(HeaterDTO heaterDTO) {
+    public HeaterDto addNewHeater(HeaterDto heaterDTO) {
         HeaterEntity heater = null;
        heaterRepository.save(new HeaterEntity(heaterDTO.getID(),heaterDTO.getName(),heaterDTO.getHeaterStatus(),heaterDTO.getRoomID(),heaterDTO.getCurrentTemperature(),heaterDTO.getTargetTemperature()));
 

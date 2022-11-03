@@ -1,27 +1,23 @@
 package com.project.smartbuidingapp.User.Model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-
-public class AppUserDTO {
+public class AppUserDto {
     private Long id;
     private String name ;
     private String username;
     private String password;
 
-    public AppUserDTO(AppUser appUser) {
+    public AppUserDto(AppUser appUser) {
         this.id = appUser.getId();
         this.name = appUser.getName();
         this.username = appUser.getUsername();
         this.password = appUser.getPassword();
     }
 
-    public AppUserDTO() {
+    public AppUserDto() {
     }
 
-    public AppUserDTO(Long id, String name, String username, String password) {
+    public AppUserDto(Long id, String name, String username, String password) {
         this.id = id;
         this.name = name;
         this.username = username;

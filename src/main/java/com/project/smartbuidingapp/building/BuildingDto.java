@@ -1,6 +1,6 @@
 package com.project.smartbuidingapp.Building;
 
-public class BuildingDTO {
+public class BuildingDto {
 
     private Long ID;
     private Long buildingID ;
@@ -12,10 +12,10 @@ public class BuildingDTO {
     private Long  buildingSize;
     private Integer buildingAge;
 
-    public BuildingDTO() {
+    public BuildingDto() {
     }
 
-    public BuildingDTO(Long ID, Long buildingID, String buildingName, String buildingAddress, String buildingOwner, String storeyNumber, String buildingType, Long buildingSize, Integer buildingAge) {
+    public BuildingDto(Long ID, Long buildingID, String buildingName, String buildingAddress, String buildingOwner, String storeyNumber, String buildingType, Long buildingSize, Integer buildingAge) {
         this.ID = ID;
         this.buildingID = buildingID;
         this.buildingName = buildingName;
@@ -27,7 +27,7 @@ public class BuildingDTO {
         this.buildingAge = buildingAge;
     }
 
-    public BuildingDTO(BuildingEntity buildingEntity) {
+    public BuildingDto(BuildingEntity buildingEntity) {
         this.ID = buildingEntity.getID();
         this.buildingID = buildingEntity.getBuildingID();
         this.buildingName = buildingEntity.getBuildingName();

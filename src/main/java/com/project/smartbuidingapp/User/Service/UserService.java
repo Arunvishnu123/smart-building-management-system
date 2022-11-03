@@ -1,7 +1,6 @@
 package com.project.smartbuidingapp.User.Service;
 
 import com.project.smartbuidingapp.User.Model.AppUser;
-import com.project.smartbuidingapp.User.Model.AppUserDTO;
 import com.project.smartbuidingapp.User.Model.Role;
 
 import java.util.List;

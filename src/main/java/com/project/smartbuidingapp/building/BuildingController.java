@@ -20,7 +20,7 @@ public class BuildingController {
     private BuildingService buildingService ;
 
     @PostMapping("/building/new")
-    public ResponseEntity<BuildingDTO> addNewBuilding(@RequestBody BuildingDTO dto){
+    public ResponseEntity<BuildingDto> addNewBuilding(@RequestBody BuildingDto dto){
         System.out.println("Building data " + dto);
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/v1/building/new").toUriString());
 
@@ -34,12 +34,12 @@ public class BuildingController {
     }
 
     @GetMapping("/buildings")
-    public List<BuildingDTO> getAllBuildings(){
+    public List<BuildingDto> getAllBuildings(){
         return buildingService.getAllBuildings();
     }
 
     @GetMapping("/buildings/{buildingID}")
-    public BuildingDTO getBuildingByID(@PathVariable("buildingID") Long buildingID){
+    public BuildingDto getBuildingByID(@PathVariable("buildingID") Long buildingID){
         return buildingService.getBuildingByID(buildingID);
     }
 

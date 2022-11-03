@@ -41,7 +41,7 @@ public class BuildingEntity {
         this.buildingAge = buildingAge;
     }
 
-    public BuildingEntity(BuildingDTO dto) {
+    public BuildingEntity(BuildingDto dto) {
     }
 
     public Long getID() {

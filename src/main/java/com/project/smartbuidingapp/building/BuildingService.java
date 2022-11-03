@@ -18,19 +18,19 @@ public class BuildingService {
 @Autowired
     private final BuildingRepository buildingRepository;
 
-    public List<BuildingDTO> getAllBuildings() {
-        return buildingRepository.findAll().stream().map(BuildingDTO::new).collect(Collectors.toList());
+    public List<BuildingDto> getAllBuildings() {
+        return buildingRepository.findAll().stream().map(BuildingDto::new).collect(Collectors.toList());
     }
 
-    public BuildingDTO getBuildingByID(Long id) {
-        return buildingRepository.findById(id).map(BuildingDTO::new).orElse(null);
+    public BuildingDto getBuildingByID(Long id) {
+        return buildingRepository.findById(id).map(BuildingDto::new).orElse(null);
     }
 
     public void deleteBuildingByID(Long id) {
         buildingRepository.deleteById(id);
     }
 
-    public BuildingDTO addNewBuilding(BuildingDTO newDTO) {
+    public BuildingDto addNewBuilding(BuildingDto newDTO) {
 
         BuildingEntity buildingEntity = null;
         buildingRepository.save(new BuildingEntity(newDTO.getID(), newDTO.getBuildingID(), newDTO.getBuildingName(), newDTO.getBuildingAddress(), newDTO.getBuildingOwner(), newDTO.getStoreyNumber(), newDTO.getBuildingType(), newDTO.getBuildingSize(), newDTO.getBuildingAge()));

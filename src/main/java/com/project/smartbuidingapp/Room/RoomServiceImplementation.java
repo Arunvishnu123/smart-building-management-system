@@ -2,10 +2,8 @@ package com.project.smartbuidingapp.Room;
 
 import com.project.smartbuidingapp.CustomType.HeaterStatus;
 import com.project.smartbuidingapp.CustomType.WindowStatus;
-import com.project.smartbuidingapp.Heater.HeaterDTO;
 import com.project.smartbuidingapp.Heater.HeaterEntity;
 import com.project.smartbuidingapp.Heater.HeaterRepository;
-import com.project.smartbuidingapp.Window.WindowDTO;
 import com.project.smartbuidingapp.Window.WindowEntity;
 import com.project.smartbuidingapp.Window.WindowRepository;
 import lombok.RequiredArgsConstructor;
@@ -31,14 +29,14 @@ public class RoomServiceImplementation implements RoomService{
 
 
     @Override
-    public List<RoomDTO> getAllRooms() {
+    public List<RoomDto> getAllRooms() {
 
-        return  roomRepository.findAll().stream().map(RoomDTO::new).collect(Collectors.toList());
+        return  roomRepository.findAll().stream().map(RoomDto::new).collect(Collectors.toList());
     }
 
     @Override
-    public RoomDTO getRoomById(Long Id) {
-        return roomRepository.findById(Id).map(RoomDTO::new).orElse(null);
+    public RoomDto getRoomById(Long Id) {
+        return roomRepository.findById(Id).map(RoomDto::new).orElse(null);
     }
 
     @Override
@@ -47,7 +45,7 @@ public class RoomServiceImplementation implements RoomService{
     }
 
     @Override
-    public RoomDTO addNewRoom(RoomDTO roomDTO) {
+    public RoomDto addNewRoom(RoomDto roomDTO) {
        RoomEntity room = null;
         roomRepository.save(new RoomEntity(roomDTO.getID(),roomDTO.getRoomName(),roomDTO.getRoomID(),roomDTO.getRoomTemperature(),roomDTO.getBuildingID()));
 

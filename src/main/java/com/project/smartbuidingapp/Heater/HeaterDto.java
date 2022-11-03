@@ -1,12 +1,9 @@
 package com.project.smartbuidingapp.Heater;
 
 import com.project.smartbuidingapp.CustomType.HeaterStatus;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 
-public class HeaterDTO {
+public class HeaterDto {
     private Long ID;
     private String name ;
     private HeaterStatus  heaterStatus ;
@@ -14,10 +11,10 @@ public class HeaterDTO {
     private Float currentTemperature ;
     private Float targetTemperature;
 
-    public HeaterDTO() {
+    public HeaterDto() {
     }
 
-    public HeaterDTO(Long ID, String name, HeaterStatus heaterStatus, Long roomID, Float currentTemperature, Float targetTemperature) {
+    public HeaterDto(Long ID, String name, HeaterStatus heaterStatus, Long roomID, Float currentTemperature, Float targetTemperature) {
         this.ID = ID;
         this.name = name;
         this.heaterStatus = heaterStatus;
@@ -26,7 +23,7 @@ public class HeaterDTO {
         this.targetTemperature = targetTemperature;
     }
 
-    public HeaterDTO(HeaterEntity heaterEntity) {
+    public HeaterDto(HeaterEntity heaterEntity) {
         this.ID = heaterEntity.getID();
         this.name = heaterEntity.getName();
         this.heaterStatus = heaterEntity.getHeaterStatus();

@@ -1,29 +1,26 @@
 package com.project.smartbuidingapp.Window;
 
 import com.project.smartbuidingapp.CustomType.WindowStatus;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 
-public class WindowDTO {
+public class WindowDto {
     private Long ID;
     private String name ;
     private WindowStatus windowStatus ;
     private Long roomID ;
 
 
-    public WindowDTO(WindowEntity windowEntity) {
+    public WindowDto(WindowEntity windowEntity) {
         this.ID = windowEntity.getID();
         this.name = windowEntity.getName();
         this.windowStatus = windowEntity.getWindowStatus();
         this.roomID = windowEntity.getRoomID();
     }
 
-    public WindowDTO() {
+    public WindowDto() {
     }
 
-    public WindowDTO(Long ID, String name, WindowStatus windowStatus, Long roomID) {
+    public WindowDto(Long ID, String name, WindowStatus windowStatus, Long roomID) {
         this.ID = ID;
         this.name = name;
         this.windowStatus = windowStatus;
