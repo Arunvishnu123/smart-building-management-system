@@ -1,13 +1,9 @@
 package com.project.smartbuidingapp.User.Service;
 
-import com.project.smartbuidingapp.Building.BuildingEntity;
 import com.project.smartbuidingapp.User.Model.AppUser;
-import com.project.smartbuidingapp.User.Model.AppUserDTO;
 import com.project.smartbuidingapp.User.Model.Role;
 import com.project.smartbuidingapp.User.Repository.RoleRepository;
 import com.project.smartbuidingapp.User.Repository.UserRepository;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -21,7 +17,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
+
 @Transactional
 
 public class UserServiceImplementation implements UserService, UserDetailsService {
@@ -30,6 +26,12 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
     private  final RoleRepository roleRepository;
 
     private  final PasswordEncoder passwordEncoder;
+
+    public UserServiceImplementation(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

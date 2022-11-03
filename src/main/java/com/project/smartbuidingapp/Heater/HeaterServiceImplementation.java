@@ -1,10 +1,6 @@
 package com.project.smartbuidingapp.Heater;
 
-import com.project.smartbuidingapp.Building.BuildingDTO;
-import com.project.smartbuidingapp.Building.BuildingEntity;
 import com.project.smartbuidingapp.CustomType.HeaterStatus;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +10,14 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
-@RequiredArgsConstructor
+
 public class HeaterServiceImplementation implements HeaterService{
 @Autowired
     private final HeaterRepository heaterRepository;
+
+    public HeaterServiceImplementation(HeaterRepository heaterRepository) {
+        this.heaterRepository = heaterRepository;
+    }
 
     @Override
     public List<HeaterDTO> getAllHeaters() {
