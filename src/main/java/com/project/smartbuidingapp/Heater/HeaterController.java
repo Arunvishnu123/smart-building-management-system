@@ -1,6 +1,6 @@
 package com.project.smartbuidingapp.Heater;
 
-import com.project.smartbuidingapp.Building.BuildingDTO;
+import com.project.smartbuidingapp.Building.BuildingDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
