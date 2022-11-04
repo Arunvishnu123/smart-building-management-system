@@ -31,8 +31,16 @@ public class AppUser {
     }
 
 
+    public AppUser() {
+    }
 
-
+    public AppUser(Long id, String name, String username, String password, Collection<Role> roles) {
+        this.id = id;
+        this.name = name;
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+    }
 
     public Long getId() {
         return id;
