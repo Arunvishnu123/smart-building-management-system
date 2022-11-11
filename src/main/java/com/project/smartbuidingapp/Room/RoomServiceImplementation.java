@@ -53,7 +53,7 @@ public class RoomServiceImplementation implements RoomService{
 
     @Override
     public ResponseEntity<RoomResponse> addNewRoom(RoomPost roomDTO) {
-        if(buildingRepository.findByBuildingID(roomDTO.getBuildingID()) == null){
+       if(buildingRepository.findByBuildingID(roomDTO.getBuildingID()) != null){
             if(roomRepository.findByRoomID(roomDTO.getRoomID()) == null){
                 RoomEntity room = null;
                 roomRepository.save(new RoomEntity(roomDTO.getID(),roomDTO.getRoomName(),roomDTO.getRoomID(),roomDTO.getRoomTemperature(),roomDTO.getBuildingID()));
