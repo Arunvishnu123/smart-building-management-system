@@ -1,6 +1,7 @@
 package com.project.smartbuidingapp.Heater;
 
-import com.project.smartbuidingapp.Building.BuildingDto;
+import com.project.smartbuidingapp.ResponseClass.HeaterResponse;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public interface HeaterService {
 
     List<HeaterDto> getHeatersFromRoomID(Long roomID);
 
-    HeaterDto addNewHeater(HeaterDto heaterDTO);
+    ResponseEntity<HeaterResponse> addNewHeater(HeaterDto heaterDTO);
 
 
 

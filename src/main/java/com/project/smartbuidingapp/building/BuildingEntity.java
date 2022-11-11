@@ -1,6 +1,14 @@
 package com.project.smartbuidingapp.Building;
 
+import com.project.smartbuidingapp.Heater.HeaterEntity;
+import com.project.smartbuidingapp.Room.RoomEntity;
+import com.project.smartbuidingapp.User.Model.Role;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name = "Building")
@@ -9,7 +17,7 @@ public class BuildingEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
-
+    @Column(name="building_id")
     private Long buildingID ;
 
     private String buildingName;
@@ -23,8 +31,26 @@ public class BuildingEntity {
     private String buildingType;
 
     private Long  buildingSize;
-
     private Integer buildingAge;
+
+
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "building_id")
+    private List<RoomEntity> rooms ;
+
+    public BuildingEntity(Long ID, Long buildingID, String buildingName, String buildingAddress, String buildingOwner, String storeyNumber, String buildingType, Long buildingSize, Integer buildingAge, List<RoomEntity> room) {
+        this.ID = ID;
+        this.buildingID = buildingID;
+        this.buildingName = buildingName;
+        this.buildingAddress = buildingAddress;
+        this.buildingOwner = buildingOwner;
+        this.storeyNumber = storeyNumber;
+        this.buildingType = buildingType;
+        this.buildingSize = buildingSize;
+        this.buildingAge = buildingAge;
+        this.rooms = room;
+    }
 
     public BuildingEntity() {
     }
@@ -114,5 +140,13 @@ public class BuildingEntity {
 
     public void setBuildingAge(Integer buildingAge) {
         this.buildingAge = buildingAge;
+    }
+
+    public List<RoomEntity> getRoom() {
+        return rooms;
+    }
+
+    public void setRoom(List<RoomEntity> room) {
+        this.rooms = room;
     }
 }

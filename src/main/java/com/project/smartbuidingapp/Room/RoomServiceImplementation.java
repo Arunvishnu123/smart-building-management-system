@@ -1,5 +1,7 @@
 package com.project.smartbuidingapp.Room;
 
+import com.project.smartbuidingapp.Building.BuildingRepository;
+import com.project.smartbuidingapp.ResponseClass.RoomResponse;
 import com.project.smartbuidingapp.CustomType.HeaterStatus;
 import com.project.smartbuidingapp.CustomType.WindowStatus;
 import com.project.smartbuidingapp.Heater.HeaterEntity;
@@ -8,6 +10,8 @@ import com.project.smartbuidingapp.Window.WindowEntity;
 import com.project.smartbuidingapp.Window.WindowRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -21,6 +25,9 @@ public class RoomServiceImplementation implements RoomService{
 
     @Autowired
     private final RoomRepository roomRepository;
+
+    @Autowired
+    private final BuildingRepository buildingRepository;
 
     @Autowired
     private final WindowRepository windowRepository;
@@ -45,11 +52,27 @@ public class RoomServiceImplementation implements RoomService{
     }
 
     @Override
-    public RoomDto addNewRoom(RoomDto roomDTO) {
-       RoomEntity room = null;
-        roomRepository.save(new RoomEntity(roomDTO.getID(),roomDTO.getRoomName(),roomDTO.getRoomID(),roomDTO.getRoomTemperature(),roomDTO.getBuildingID()));
-
-        return roomDTO;
+    public ResponseEntity<RoomResponse> addNewRoom(RoomPost roomDTO) {
+        if(buildingRepository.findByBuildingID(roomDTO.getBuildingID()) == null){
+            if(roomRepository.findByRoomID(roomDTO.getRoomID()) == null){
+                RoomEntity room = null;
+                roomRepository.save(new RoomEntity(roomDTO.getID(),roomDTO.getRoomName(),roomDTO.getRoomID(),roomDTO.getRoomTemperature(),roomDTO.getBuildingID()));
+                RoomResponse roomResponse = new RoomResponse();
+                roomResponse.response = "New room is added" ;
+                roomResponse.roomPost = roomDTO ;
+                return new ResponseEntity<>(roomResponse, HttpStatus.NOT_FOUND);
+            }else{
+                RoomResponse roomResponse = new RoomResponse();
+                roomResponse.response = "room ID is already exist in the database" ;
+                roomResponse.roomPost = roomDTO ;
+                return new ResponseEntity<>(roomResponse, HttpStatus.CONFLICT);
+            }
+        }else{
+            RoomResponse roomResponse = new RoomResponse();
+            roomResponse.response = "Building ID is not Found" ;
+            roomResponse.roomPost = roomDTO ;
+            return new ResponseEntity<>(roomResponse, HttpStatus.NOT_FOUND);
+        }
     }
 
     @Override

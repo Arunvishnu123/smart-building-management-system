@@ -1,5 +1,8 @@
 package com.project.smartbuidingapp.Window;
 
+import com.project.smartbuidingapp.ResponseClass.WindowResponse;
+import org.springframework.http.ResponseEntity;
+
 import java.util.List;
 
 public interface WindowService {
@@ -10,7 +13,7 @@ public interface WindowService {
 
     List<WindowDto> getWindowsFromRoomID(Long roomID);
 
-    WindowDto addNewWindow(WindowDto windowDTO);
+    ResponseEntity<WindowResponse> addNewWindow(WindowDto windowDTO);
 
 
 }

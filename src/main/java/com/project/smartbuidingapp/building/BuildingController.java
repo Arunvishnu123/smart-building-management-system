@@ -1,14 +1,11 @@
 package com.project.smartbuidingapp.Building;
 
 
-import com.project.smartbuidingapp.User.Model.Role;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import com.project.smartbuidingapp.ResponseClass.BuildingResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -20,16 +17,14 @@ public class BuildingController {
     private BuildingService buildingService ;
 
     @PostMapping("/building/new")
-    public ResponseEntity<BuildingDto> addNewBuilding(@RequestBody BuildingDto dto){
+    public ResponseEntity<BuildingResponse>  addNewBuilding(@RequestBody BuildingPost dto){
         System.out.println("Building data " + dto);
-        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/v1/building/new").toUriString());
-
-        return ResponseEntity.created(uri).body(buildingService.addNewBuilding(dto));
+        return buildingService.addNewBuilding(dto);
     }
 
 
-    @DeleteMapping("/buildings/{buildingID}")
-    public void deleteBuilding(@PathVariable("buildingID") Long buildingID){
+    @DeleteMapping("/buildings/{ID}")
+    public void deleteBuilding(@PathVariable("ID") Long buildingID){
         buildingService.deleteBuildingByID(buildingID);
     }
 
@@ -38,9 +33,15 @@ public class BuildingController {
         return buildingService.getAllBuildings();
     }
 
-    @GetMapping("/buildings/{buildingID}")
-    public BuildingDto getBuildingByID(@PathVariable("buildingID") Long buildingID){
+    @GetMapping("/buildings/{ID}")
+    public BuildingDto getBuildingByID(@PathVariable("ID") Long buildingID){
         return buildingService.getBuildingByID(buildingID);
     }
+    @GetMapping("/building/{buildingName}")
+    public BuildingEntity getBuildingByName(@PathVariable("buildingName") String buildingName){
+        return buildingService.getBuildingByName(buildingName);
+    }
+
+
 
 }

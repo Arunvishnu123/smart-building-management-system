@@ -1,5 +1,13 @@
 package com.project.smartbuidingapp.Building;
 
+import com.project.smartbuidingapp.Room.RoomEntity;
+
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 public class BuildingDto {
 
     private Long ID;
@@ -8,12 +16,31 @@ public class BuildingDto {
     private String buildingAddress;
     private String buildingOwner;
     private String storeyNumber;
+
     private String buildingType;
     private Long  buildingSize;
     private Integer buildingAge;
 
+    private List<RoomEntity> rooms ;
+
     public BuildingDto() {
     }
+
+
+    public BuildingDto(Long ID, Long buildingID, String buildingName, String buildingAddress, String buildingOwner, String storeyNumber, String buildingType, Long buildingSize, Integer buildingAge, List<RoomEntity> rooms) {
+        this.ID = ID;
+        this.buildingID = buildingID;
+        this.buildingName = buildingName;
+        this.buildingAddress = buildingAddress;
+        this.buildingOwner = buildingOwner;
+        this.storeyNumber = storeyNumber;
+        this.buildingType = buildingType;
+        this.buildingSize = buildingSize;
+        this.buildingAge = buildingAge;
+        this.rooms = rooms;
+    }
+
+
 
     public BuildingDto(Long ID, Long buildingID, String buildingName, String buildingAddress, String buildingOwner, String storeyNumber, String buildingType, Long buildingSize, Integer buildingAge) {
         this.ID = ID;
@@ -27,6 +54,7 @@ public class BuildingDto {
         this.buildingAge = buildingAge;
     }
 
+
     public BuildingDto(BuildingEntity buildingEntity) {
         this.ID = buildingEntity.getID();
         this.buildingID = buildingEntity.getBuildingID();
@@ -37,6 +65,7 @@ public class BuildingDto {
         this.buildingType = buildingEntity.getBuildingType();
         this.buildingSize = buildingEntity.getBuildingSize();
         this.buildingAge = buildingEntity.getBuildingAge();
+        this.rooms = buildingEntity.getRoom();
     }
 
 
@@ -114,5 +143,13 @@ public class BuildingDto {
 
     public void setBuildingAge(Integer buildingAge) {
         this.buildingAge = buildingAge;
+    }
+
+    public List<RoomEntity> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(List<RoomEntity> rooms) {
+        this.rooms = rooms;
     }
 }

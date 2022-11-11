@@ -1,7 +1,10 @@
 package com.project.smartbuidingapp.Heater;
 
+import com.project.smartbuidingapp.ResponseClass.HeaterResponse;
 import com.project.smartbuidingapp.CustomType.HeaterStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -52,10 +55,26 @@ public class HeaterServiceImplementation implements HeaterService{
    }
 
     @Override
-    public HeaterDto addNewHeater(HeaterDto heaterDTO) {
-        HeaterEntity heater = null;
-       heaterRepository.save(new HeaterEntity(heaterDTO.getID(),heaterDTO.getName(),heaterDTO.getHeaterStatus(),heaterDTO.getRoomID(),heaterDTO.getCurrentTemperature(),heaterDTO.getTargetTemperature()));
+    public ResponseEntity<HeaterResponse> addNewHeater(HeaterDto heaterDTO) {
 
-        return heaterDTO;
+        if(heaterRepository.findByRoomID(heaterDTO.getRoomID()) == null){
+            HeaterEntity heater = null;
+            heaterRepository.save(new HeaterEntity(heaterDTO.getID(),heaterDTO.getName(),heaterDTO.getHeaterStatus(),heaterDTO.getRoomID(),heaterDTO.getCurrentTemperature(),heaterDTO.getTargetTemperature()));
+            HeaterResponse heaterResponse = new HeaterResponse();
+            heaterResponse.heaterPost = heaterDTO;
+            heaterResponse.response ="new heater is created" ;
+
+
+            return new ResponseEntity<>(heaterResponse, HttpStatus.CREATED);
+        }else{
+            HeaterResponse heaterResponse = new HeaterResponse();
+            heaterResponse.heaterPost = heaterDTO;
+            heaterResponse.response ="room id is not found" ;
+
+
+            return new ResponseEntity<>(heaterResponse, HttpStatus.NOT_FOUND);
+        }
+
+
     }
 }

@@ -1,5 +1,6 @@
 package com.project.smartbuidingapp.Room;
 
+import com.project.smartbuidingapp.ResponseClass.RoomResponse;
 import com.project.smartbuidingapp.Heater.HeaterEntity;
 import com.project.smartbuidingapp.Window.WindowEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,9 @@ public class RoomController {
     private RoomService roomService ;
 
     @PostMapping("/room/new")
-    public ResponseEntity<RoomDto> addNewRoom(@RequestBody RoomDto dto){
+    public ResponseEntity<RoomResponse> addNewRoom(@RequestBody RoomPost dto){
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/v1/room/new").toUriString());
-        return ResponseEntity.created(uri).body(roomService.addNewRoom(dto));
+        return roomService.addNewRoom(dto);
     }
     @GetMapping("/rooms")
     public List<RoomDto> getAllRooms(){

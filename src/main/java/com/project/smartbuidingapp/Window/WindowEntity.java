@@ -18,6 +18,7 @@ public class WindowEntity {
     private Long ID;
     private String name ;
     private WindowStatus windowStatus ;
+    @Column(name="room_id")
     private Long roomID ;
 
     public WindowEntity() {

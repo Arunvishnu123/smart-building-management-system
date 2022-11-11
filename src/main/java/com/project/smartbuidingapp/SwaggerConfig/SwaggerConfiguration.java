@@ -1,6 +1,7 @@
 package com.project.smartbuidingapp.SwaggerConfig;
 
 
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.PathSelectors;
@@ -54,6 +55,8 @@ public class SwaggerConfiguration {
     private SecurityContext securityContext(){
         return SecurityContext.builder().securityReferences(defaultAuth()).build();
     }
+
+
 
     private List<SecurityReference> defaultAuth(){
         AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");

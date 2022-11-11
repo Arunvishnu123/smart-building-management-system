@@ -1,13 +1,10 @@
 package com.project.smartbuidingapp.Building;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.mockito.Mockito.verify;
 
@@ -21,13 +18,14 @@ public class BuildingServiceTest {
 
     @BeforeEach
     void setUp(){
-        underTest = new BuildingService(buildingRepository);
+        underTest = new BuildingServiceImplementation(buildingRepository);
     }
-
 
     @Test
     void canGetAllBuilding(){
               underTest.getAllBuildings();
               verify(buildingRepository).findAll();
     }
+
+    
 }

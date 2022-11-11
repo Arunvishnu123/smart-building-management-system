@@ -1,5 +1,6 @@
 package com.project.smartbuidingapp.Window;
 
+import com.project.smartbuidingapp.ResponseClass.WindowResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,9 +18,9 @@ public class WindowController {
 
 
     @PostMapping("/window/new")
-    public ResponseEntity<WindowDto> addNewWindow(@RequestBody WindowDto dto){
+    public ResponseEntity<WindowResponse> addNewWindow(@RequestBody WindowDto dto){
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/v1/Window/new").toUriString());
-        return ResponseEntity.created(uri).body(windowService.addNewWindow(dto));
+        return windowService.addNewWindow(dto);
     }
     @GetMapping("/windows")
     public List<WindowDto> getAllWindows(){

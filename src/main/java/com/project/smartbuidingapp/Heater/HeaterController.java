@@ -1,6 +1,6 @@
 package com.project.smartbuidingapp.Heater;
 
-import com.project.smartbuidingapp.Building.BuildingDto;
+import com.project.smartbuidingapp.ResponseClass.HeaterResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,9 +17,9 @@ public class HeaterController {
     private HeaterService heaterService ;
 
     @PostMapping("/heater/new")
-    public ResponseEntity<HeaterDto> addNewHeater(@RequestBody HeaterDto dto){
+    public ResponseEntity<HeaterResponse>addNewHeater(@RequestBody HeaterDto dto){
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/v1/heater/new").toUriString());
-        return ResponseEntity.created(uri).body(heaterService.addNewHeater(dto));
+        return heaterService.addNewHeater(dto);
     }
     @GetMapping("/heaters")
     public List<HeaterDto> getAllHeaters(){

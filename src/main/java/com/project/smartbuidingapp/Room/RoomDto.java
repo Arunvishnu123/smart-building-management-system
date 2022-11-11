@@ -1,18 +1,30 @@
 package com.project.smartbuidingapp.Room;
 
 
+import com.project.smartbuidingapp.Heater.HeaterEntity;
+import com.project.smartbuidingapp.Window.WindowEntity;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 public class RoomDto {
     private Long ID;
     private String roomName;
+    @Column(name="room_id")
     private Long roomID;
     private float roomTemperature;
     private Long buildingID;
-    /*
-    @ManyToMany
-    private Collection<WindowEntity> windows = new ArrayList<>();
-    @ManyToMany
-    private Collection<HeaterEntity> heaters = new ArrayList<>();
-*/
+
+
+    private List<HeaterEntity> heaters;
+
+
+    private List<WindowEntity> windows;
+
 
     public RoomDto(RoomEntity roomEntity) {
         this.ID = roomEntity.getID();
@@ -20,6 +32,18 @@ public class RoomDto {
         this.roomID = roomEntity.getRoomID();
         this.roomTemperature = roomEntity.getRoomTemperature();
         this.buildingID = roomEntity.getBuildingID();
+        this.windows = roomEntity.getWindows();
+        this.heaters = roomEntity.getHeaters();
+    }
+
+    public RoomDto(Long ID, String roomName, Long roomID, float roomTemperature, Long buildingID, List<HeaterEntity> heaters, List<WindowEntity> windows) {
+        this.ID = ID;
+        this.roomName = roomName;
+        this.roomID = roomID;
+        this.roomTemperature = roomTemperature;
+        this.buildingID = buildingID;
+        this.heaters = heaters;
+        this.windows = windows;
     }
 
     public RoomDto() {
@@ -55,6 +79,22 @@ public class RoomDto {
 
     public void setRoomID(Long roomID) {
         this.roomID = roomID;
+    }
+
+    public Collection<HeaterEntity> getHeaters() {
+        return heaters;
+    }
+
+    public void setHeaters(List<HeaterEntity> heaters) {
+        this.heaters = heaters;
+    }
+
+    public Collection<WindowEntity> getWindows() {
+        return windows;
+    }
+
+    public void setWindows(List<WindowEntity> windows) {
+        this.windows = windows;
     }
 
     public float getRoomTemperature() {

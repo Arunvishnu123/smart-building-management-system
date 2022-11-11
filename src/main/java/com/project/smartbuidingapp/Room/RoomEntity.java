@@ -6,10 +6,13 @@ import com.project.smartbuidingapp.Window.WindowEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -23,15 +26,26 @@ public class RoomEntity {
     private String roomName;
     private Long roomID;
     private float roomTemperature;
+    @Column(name="building_id")
     private Long buildingID;
-    /*
-    @ManyToMany
-    private Collection<WindowEntity> windows = new ArrayList<>();
-    @ManyToMany
-    private Collection<HeaterEntity> heaters = new ArrayList<>();
-*/
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "room_id")
+    private List<HeaterEntity> heaters ;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "room_id")
+    private List<WindowEntity> windows;
     public RoomEntity() {
+    }
+
+    public RoomEntity(Long ID, String roomName, Long roomID, float roomTemperature, Long buildingID, List<HeaterEntity> heaters, List<WindowEntity> windows) {
+        this.ID = ID;
+        this.roomName = roomName;
+        this.roomID = roomID;
+        this.roomTemperature = roomTemperature;
+        this.buildingID = buildingID;
+        this.heaters = heaters;
+        this.windows = windows;
     }
 
     public RoomEntity(Long ID, String roomName, Long roomID, float roomTemperature, Long buildingID) {
@@ -40,6 +54,22 @@ public class RoomEntity {
         this.roomID = roomID;
         this.roomTemperature = roomTemperature;
         this.buildingID = buildingID;
+    }
+
+    public List<HeaterEntity> getHeaters() {
+        return heaters;
+    }
+
+    public void setHeaters(List<HeaterEntity> heaters) {
+        this.heaters = heaters;
+    }
+
+    public List<WindowEntity> getWindows() {
+        return windows;
+    }
+
+    public void setWindows(List<WindowEntity> windows) {
+        this.windows = windows;
     }
 
     public Long getID() {

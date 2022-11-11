@@ -16,6 +16,7 @@ public class HeaterEntity {
     private Long ID;
     private String name ;
     private HeaterStatus heaterStatus ;
+    @Column(name="room_id")
     private Long roomID ;
     private Float currentTemperature ;
     private Float targetTemperature;
