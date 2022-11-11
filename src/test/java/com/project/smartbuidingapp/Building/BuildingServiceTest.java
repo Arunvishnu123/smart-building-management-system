@@ -27,5 +27,5 @@ public class BuildingServiceTest {
               verify(buildingRepository).findAll();
     }
 
-    
+
 }
