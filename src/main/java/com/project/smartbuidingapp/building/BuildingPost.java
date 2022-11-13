@@ -27,6 +27,19 @@ public class BuildingPost {
         this.buildingAge = buildingAge;
     }
 
+    public BuildingPost(BuildingEntity buildingEntity) {
+        this.ID = buildingEntity.getID();
+        this.buildingID = buildingEntity.getBuildingID();
+        this.buildingName = buildingEntity.getBuildingName();
+        this.buildingAddress = buildingEntity.getBuildingAddress();
+        this.buildingOwner = buildingEntity.getBuildingOwner();
+        this.storeyNumber = buildingEntity.getStoreyNumber();
+        this.buildingType = buildingEntity.getBuildingType();
+        this.buildingSize = buildingEntity.getBuildingSize();
+        this.buildingAge = buildingEntity.getBuildingAge();
+    }
+
+
     public Long getID() {
         return ID;
     }

@@ -3,6 +3,7 @@ package com.project.smartbuidingapp.Building;
 import com.project.smartbuidingapp.Heater.HeaterEntity;
 import com.project.smartbuidingapp.Room.RoomEntity;
 import com.project.smartbuidingapp.User.Model.Role;
+import lombok.Builder;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Entity
+@Builder
 @Table(name = "Building")
 
 public class BuildingEntity {
