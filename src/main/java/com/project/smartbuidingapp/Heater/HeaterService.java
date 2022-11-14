@@ -16,6 +16,8 @@ public interface HeaterService {
 
     ResponseEntity<HeaterResponse> addNewHeater(HeaterDto heaterDTO);
 
+    ResponseEntity<HeaterResponse> updateHeater(HeaterDto heaterDTO);
+
 
 
 }

@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+import static org.mockito.BDDMockito.willDoNothing;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.BDDMockito.given;
@@ -111,7 +112,15 @@ public class BuildingServiceTest {
 
     }
 
+    @Test
+    void canDeleteByID(){
+        //given
+        Long buildingID = 1L ;
+        willDoNothing().given(buildingRepository).deleteById(buildingID);
 
-
-
+        //when
+        buildingService.deleteBuildingByID(buildingID);
+        //then
+        verify(buildingRepository,times(1)).deleteById(buildingID);
+    }
 }

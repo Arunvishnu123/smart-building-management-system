@@ -18,9 +18,8 @@ public class RoomController {
     @Autowired
     private RoomService roomService ;
 
-    @PostMapping("/room/new")
+    @PostMapping("/rooms/new")
     public ResponseEntity<RoomResponse> addNewRoom(@RequestBody RoomPost dto){
-        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/v1/room/new").toUriString());
         return roomService.addNewRoom(dto);
     }
     @GetMapping("/rooms")
@@ -31,6 +30,12 @@ public class RoomController {
     public RoomDto getRoomById(@PathVariable("roomID") Long roomID){
         return roomService.getRoomById(roomID);
     }
+
+    @GetMapping("/rooms/{buildingID}")
+    public List<RoomDto> getRoomByBuildingId(@PathVariable("buildingID") Long buildingID){
+        return roomService.getAllRoomByBuildingID(buildingID);
+    }
+
 
 
 

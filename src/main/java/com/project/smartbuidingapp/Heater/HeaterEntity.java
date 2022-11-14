@@ -13,6 +13,7 @@ import javax.persistence.*;
 public class HeaterEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="heater_id")
     private Long ID;
     private String name ;
     private HeaterStatus heaterStatus ;

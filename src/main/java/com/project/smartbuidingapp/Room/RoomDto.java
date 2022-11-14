@@ -14,7 +14,7 @@ import java.util.List;
 public class RoomDto {
     private Long ID;
     private String roomName;
-    @Column(name="room_id")
+
     private Long roomID;
     private float roomTemperature;
     private Long buildingID;

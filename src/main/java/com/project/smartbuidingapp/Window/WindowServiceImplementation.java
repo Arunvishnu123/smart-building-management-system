@@ -51,7 +51,7 @@ public class WindowServiceImplementation implements WindowService {
 
     @Override
     public ResponseEntity<WindowResponse> addNewWindow(WindowDto windowDTO) {
-        if(windowRepository.findByRoomID(windowDTO.getRoomID()) == null){
+        if(windowRepository.findByRoomID(windowDTO.getRoomID()) != null){
             WindowEntity window = null;
             windowRepository.save(new WindowEntity(windowDTO.getID(),windowDTO.getName(),windowDTO.getWindowStatus(),windowDTO.getRoomID()));
             WindowResponse windowResponse = new WindowResponse();

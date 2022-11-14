@@ -11,6 +11,8 @@ public interface RoomService {
 
 
     List<RoomDto> getAllRooms();
+
+    List<RoomDto> getAllRoomByBuildingID(Long buildingID);
     RoomDto getRoomById(Long Id);
     void deleteRoomByID(Long Id);
     ResponseEntity<RoomResponse> addNewRoom(RoomPost roomDTO);

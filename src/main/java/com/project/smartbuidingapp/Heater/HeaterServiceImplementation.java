@@ -57,7 +57,7 @@ public class HeaterServiceImplementation implements HeaterService{
     @Override
     public ResponseEntity<HeaterResponse> addNewHeater(HeaterDto heaterDTO) {
 
-        if(heaterRepository.findByRoomID(heaterDTO.getRoomID()) == null){
+        if(heaterRepository.findByRoomID(heaterDTO.getRoomID()) != null){
             HeaterEntity heater = null;
             heaterRepository.save(new HeaterEntity(heaterDTO.getID(),heaterDTO.getName(),heaterDTO.getHeaterStatus(),heaterDTO.getRoomID(),heaterDTO.getCurrentTemperature(),heaterDTO.getTargetTemperature()));
             HeaterResponse heaterResponse = new HeaterResponse();
@@ -74,7 +74,25 @@ public class HeaterServiceImplementation implements HeaterService{
 
             return new ResponseEntity<>(heaterResponse, HttpStatus.NOT_FOUND);
         }
+    }
+
+    @Override
+    public ResponseEntity<HeaterResponse> updateHeater(HeaterDto heaterDTO) {
+        if(heaterRepository.findById(heaterDTO.getID()) != null){
+            HeaterEntity heater = null;
+            heaterRepository.save(new HeaterEntity(heaterDTO.getID(),heaterDTO.getName(),heaterDTO.getHeaterStatus(),heaterDTO.getRoomID(),heaterDTO.getCurrentTemperature(),heaterDTO.getTargetTemperature()));
+            HeaterResponse heaterResponse = new HeaterResponse();
+            heaterResponse.heaterPost = heaterDTO;
+            heaterResponse.response ="heater updated succesfully" ;
+            return new ResponseEntity<>(heaterResponse, HttpStatus.CREATED);
+
+        }else{
+            HeaterResponse heaterResponse = new HeaterResponse();
+            heaterResponse.heaterPost = heaterDTO;
+            heaterResponse.response ="heater is not found in the database" ;
 
 
+            return new ResponseEntity<>(heaterResponse, HttpStatus.NOT_FOUND);
+        }
     }
 }

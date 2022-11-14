@@ -15,6 +15,7 @@ public class WindowEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="window_id")
     private Long ID;
     private String name ;
     private WindowStatus windowStatus ;

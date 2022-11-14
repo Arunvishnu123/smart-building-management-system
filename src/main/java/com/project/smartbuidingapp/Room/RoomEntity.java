@@ -4,6 +4,7 @@ import com.project.smartbuidingapp.Heater.HeaterEntity;
 import com.project.smartbuidingapp.User.Model.Role;
 import com.project.smartbuidingapp.Window.WindowEntity;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.LazyCollection;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+@Builder
 @Table(name = "Rooms")
 
 public class RoomEntity {
@@ -24,6 +26,7 @@ public class RoomEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
     private String roomName;
+    @Column(name="room_id")
     private Long roomID;
     private float roomTemperature;
     @Column(name="building_id")

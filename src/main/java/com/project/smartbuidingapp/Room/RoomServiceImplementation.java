@@ -42,6 +42,11 @@ public class RoomServiceImplementation implements RoomService{
     }
 
     @Override
+    public List<RoomDto> getAllRoomByBuildingID(Long buildingID) {
+        return roomRepository.findByBuildingID(buildingID).stream().map(RoomDto::new).collect(Collectors.toList());
+    }
+
+    @Override
     public RoomDto getRoomById(Long Id) {
         return roomRepository.findById(Id).map(RoomDto::new).orElse(null);
     }
@@ -60,7 +65,7 @@ public class RoomServiceImplementation implements RoomService{
                 RoomResponse roomResponse = new RoomResponse();
                 roomResponse.response = "New room is added" ;
                 roomResponse.roomPost = roomDTO ;
-                return new ResponseEntity<>(roomResponse, HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>(roomResponse, HttpStatus.CREATED);
             }else{
                 RoomResponse roomResponse = new RoomResponse();
                 roomResponse.response = "room ID is already exist in the database" ;

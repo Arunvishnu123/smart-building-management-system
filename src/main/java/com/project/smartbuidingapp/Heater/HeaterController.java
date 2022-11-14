@@ -16,7 +16,7 @@ public class HeaterController {
     @Autowired
     private HeaterService heaterService ;
 
-    @PostMapping("/heater/new")
+    @PostMapping("/newheater")
     public ResponseEntity<HeaterResponse>addNewHeater(@RequestBody HeaterDto dto){
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/v1/heater/new").toUriString());
         return heaterService.addNewHeater(dto);
@@ -46,6 +46,13 @@ public class HeaterController {
 
         return heaterService.changeHeaterStatusById(heaterID);
     }
+  /*  @PostMapping("/updateHeater")
+    public ResponseEntity<HeaterResponse> updateHeater(@RequestBody HeaterDto dto){
+        return heaterService.updateHeater(dto);
+    }
+
+   */
+
 
 
 }

@@ -17,7 +17,7 @@ public class WindowController {
     private WindowService windowService;
 
 
-    @PostMapping("/window/new")
+    @PostMapping("/windows/new")
     public ResponseEntity<WindowResponse> addNewWindow(@RequestBody WindowDto dto){
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/v1/Window/new").toUriString());
         return windowService.addNewWindow(dto);
