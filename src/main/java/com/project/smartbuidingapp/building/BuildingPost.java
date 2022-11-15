@@ -7,7 +7,6 @@ public class BuildingPost {
     private String buildingAddress;
     private String buildingOwner;
     private String storeyNumber;
-
     private String buildingType;
     private Long  buildingSize;
     private Integer buildingAge;
@@ -43,6 +42,7 @@ public class BuildingPost {
     public Long getID() {
         return ID;
     }
+
 
     public void setID(Long ID) {
         this.ID = ID;
@@ -111,4 +111,5 @@ public class BuildingPost {
     public void setBuildingAge(Integer buildingAge) {
         this.buildingAge = buildingAge;
     }
+
 }
