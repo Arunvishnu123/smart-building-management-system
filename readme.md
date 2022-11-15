@@ -3,6 +3,16 @@ For testing the APIs go to this link
 - http://arun.raveendrannairsheela.cleverapps.io/swagger-ui/index.html#/
 - Name -  Arun Raveendran Nair Sheela
 
+- Note -  I deployed three application in the clever cloud among those two are connected to same repository(for testing purpose)
+#### Name of the deployed file
+
+- [ ] faircorp-arun-raveendrannairsheela - link - http://arun.raveendrannairsheela.cleverapps.io/swagger-ui/index.html#/
+- [ ] faircorp-arun-raveendransheela - link - http://arun.raveendrannairsheela1.cleverapps.io/swagger-ui/index.html#/
+- both will work (security enabled)
+
+#### Name of the deployed file without security - Used for the development of front-end application(Security disabled)
+
+- [ ] arun-withoutsecuirty - https://app-0063e412-4308-46e7-894a-bbd5f26866c3.cleverapps.io/swagger-ui/index.html#/
 - In this backend project uses five entities
 
 - [ ] Building
