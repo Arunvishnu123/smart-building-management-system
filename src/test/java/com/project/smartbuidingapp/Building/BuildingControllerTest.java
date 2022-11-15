@@ -40,14 +40,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(value=BuildingController.class)
+@WebMvcTest(BuildingController.class)
 public class BuildingControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
-
+    
     @MockBean
-    private BuildingService buildingService;
+    private BuildingRepository buildingRepository;
 
     String token;
 
@@ -67,6 +67,8 @@ public class BuildingControllerTest {
         token = response.replace("\"}", "");
 
         System.out.println(token);
+
+
     }
     @Test
      void canGetBuildingList() throws Exception {
@@ -76,8 +78,8 @@ public class BuildingControllerTest {
         buildingList.add(buildingEntity1);
         buildingList.add(buildingEntity2);
 
-        List<BuildingDto>  buildingDtos =  buildingList.stream().map(BuildingDto::new).collect(Collectors.toList());
-        Mockito.when(buildingService.getAllBuildings()).thenReturn(buildingDtos);
+       // List<BuildingDto>  buildingDtos =  buildingList.stream().map(BuildingDto::new).collect(Collectors.toList());
+        Mockito.when(buildingRepository.findAll()).thenReturn(buildingList);
         String URI = "/login";
 
         MockHttpServletRequestBuilder mockHttpServletRequestBuilder =  MockMvcRequestBuilders.get(
@@ -95,6 +97,28 @@ public class BuildingControllerTest {
        assertThat(expectedJson).isEqualTo(outputInJson);
     }
 
+
+    @Test
+    void canPostNewBuilding() throws Exception {
+        String url = "api/v1/building/new";
+
+        BuildingEntity buildingEntity1 = new BuildingEntity ( 2L,5L, "Mines", "Saint-Etienne", "Arun", "9", "structural", 1000L, 8);
+
+        String inputJson  = mapToJson(buildingEntity1);
+
+        MockHttpServletRequestBuilder mockHttpServletRequestBuilder =  MockMvcRequestBuilders.post(
+                        url).accept(
+                        MediaType.APPLICATION_JSON)
+                .header("Authorization", "Bearer"  + token );
+
+        MvcResult mvcResult = mockMvc.perform(mockHttpServletRequestBuilder).andReturn();
+
+
+
+        int status =  mvcResult.getResponse().getStatus();
+        assertEquals(201,status);
+
+    }
 
     private String mapToJson(Object object) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();

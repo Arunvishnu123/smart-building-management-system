@@ -5,6 +5,7 @@ import com.project.smartbuidingapp.Building.BuildingRepository;
 import com.project.smartbuidingapp.Building.BuildingService;
 import com.project.smartbuidingapp.Building.BuildingServiceImplementation;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -50,6 +51,10 @@ public class RoomServiceTest {
 
     }
 
+    @Test
+    void canGetRoomList(){
+
+    }
 
 
 }

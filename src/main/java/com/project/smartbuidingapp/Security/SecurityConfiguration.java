@@ -53,8 +53,8 @@ public class SecurityConfiguration {
                http.authorizeRequests().antMatchers("/login").permitAll();
                http.authorizeRequests().antMatchers(GET, "/api/v1/**").hasAnyAuthority("USER", "ADMIN");
                http.authorizeRequests().antMatchers(POST, "/api/v1/**").hasAnyAuthority("ADMIN");
-               http.authorizeRequests().antMatchers(PUT, "/api/v1/**").hasAnyAuthority("USER", "ADMIN");
-               http.authorizeRequests().antMatchers(DELETE, "/api/v1/**").hasAnyAuthority("USER", "ADMIN");
+              http.authorizeRequests().antMatchers(PUT, "/api/v1/**").hasAnyAuthority("USER", "ADMIN");
+             http.authorizeRequests().antMatchers(DELETE, "/api/v1/**").hasAnyAuthority("USER", "ADMIN");
                http.authorizeRequests().anyRequest().permitAll();
                http.authorizeRequests().and();
                http.logout().logoutUrl("/logout").logoutSuccessUrl("/logout");
