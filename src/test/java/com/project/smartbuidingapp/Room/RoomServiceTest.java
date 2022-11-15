@@ -11,6 +11,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.List;
+import java.util.Optional;
+
+import static org.mockito.BDDMockito.given;
 
 @ExtendWith(MockitoExtension.class)
 public class RoomServiceTest {
@@ -39,7 +45,7 @@ public class RoomServiceTest {
                 .build();
 
         buildingEntity = BuildingEntity.builder()
-                .buildingID(3L)
+                .buildingID(1L)
                 .ID(1L)
                 .buildingAddress("Saint-Etienne")
                 .buildingAge(9)
@@ -53,6 +59,30 @@ public class RoomServiceTest {
 
     @Test
     void canGetRoomList(){
+       RoomEntity roomEntity1 = RoomEntity.builder()
+                .ID(1L)
+                .roomID(1L)
+                .roomTemperature(23.3F)
+                .roomName("Mines")
+                .buildingID(1L)
+                .build();
+
+       given(roomRepository.findAll()).willReturn(List.of(roomEntity,roomEntity1));
+       List<RoomDto> roomList = roomService.getAllRooms();
+
+       assertThat(roomList).isNotNull();
+       assertThat(roomList.size()).isEqualTo(2);
+
+    }
+
+    @Test
+    void canGetRoomByBuildingID(){
+        given(roomRepository.findByBuildingID(1L)).willReturn(List.of(roomEntity));
+
+        List<RoomDto> getRoomByBuildingID = roomService.getAllRoomByBuildingID(buildingEntity.getBuildingID());
+
+        assertThat(getRoomByBuildingID.size()).isEqualTo(1);
+
 
     }
 

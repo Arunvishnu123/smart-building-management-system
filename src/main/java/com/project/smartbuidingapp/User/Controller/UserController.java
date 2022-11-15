@@ -20,6 +20,11 @@ public class UserController {
 
     private final UserService userService ;
 
+    @GetMapping
+    public String startUp(){
+        return "<h1>Welcome to Smart Building Management System</h1>";
+    }
+
     @PostMapping("/login")
     public String login( LoginUser loginUser){
         return "login";

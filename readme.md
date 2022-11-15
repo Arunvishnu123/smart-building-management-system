@@ -13,7 +13,7 @@ For testing the APIs go to this link
 #### Name of the deployed file without security - Used for the development of front-end application(Security disabled)
 
 - [ ] arun-withoutsecuirty - https://app-0063e412-4308-46e7-894a-bbd5f26866c3.cleverapps.io/swagger-ui/index.html#/
-- In this backend project uses five entities
+#### In this backend project has five entities
 
 - [ ] Building
 - [ ] Room
@@ -64,6 +64,9 @@ Here I added layer of security for authorization and authentication
 - [ ] username - "user"
 - [ ] password - "12345"
 
+- [ ] I didn't add any restrictions for creating users and roles, login and also for added the roles to users. Anyone can create users and add roles.
+- APIs can be accessed only after add roles each user 
+
 ## Controller
 
 ### Building Controller
@@ -81,6 +84,16 @@ Here I added layer of security for authorization and authentication
 ### User Controller
 ![ScreenShot](images/usercontroller.PNG)
 
+
+### Unit Test
+
+- I added unit test of controller layer,  service layer and repository layer(For custom queries)
+- Note -  I only add unit test for building controller and that is not working. I use jwt tokens to secure the api, I include this in the unit test but it the test fails. I couldn't find the reason till now.
+- Apart from this I add unit test for service layer and repository layer of all the entities(Except User)
+
+### Folder Structure
+
+I used Controller, Service and repository layer for building the web APIs
 
 
 
