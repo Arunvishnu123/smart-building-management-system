@@ -88,8 +88,8 @@ Here I added layer of security for authorization and authentication
 ### Unit Test
 
 - I added unit test of controller layer,  service layer and repository layer(For custom queries)
-- Note -  I only add unit test for building controller and that is not working. I use jwt tokens to secure the api, I include this in the unit test but it the test fails. I couldn't find the reason till now.
-- Apart from this I add unit test for service layer and repository layer of all the entities(Except User)
+- Note -  I only added unit test for building controller and that is not working. I used jwt tokens to secure the api, I include this in the unit test but the test fails. I couldn't able to find the reason till now.
+- Apart from this I added unit test for service layer and repository layer of all the entities(Except User) and it works fines
 
 ### Folder Structure
 

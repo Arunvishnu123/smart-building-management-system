@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.project.smartbuidingapp.Building.BuildingServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-11-15T21:35:24" hostname="DESKTOP-54COFT6" time="0.129">
+  <properties/>
+  <testcase name="canSaveBuilding()" classname="com.project.smartbuidingapp.Building.BuildingServiceTest" time="0.079"/>
+  <testcase name="canGetAllBuilding()" classname="com.project.smartbuidingapp.Building.BuildingServiceTest" time="0.031"/>
+  <testcase name="canDeleteByID()" classname="com.project.smartbuidingapp.Building.BuildingServiceTest" time="0.012"/>
+  <testcase name="canGetBuildingEmptyList()" classname="com.project.smartbuidingapp.Building.BuildingServiceTest" time="0.002"/>
+  <testcase name="canGetBuildingById()" classname="com.project.smartbuidingapp.Building.BuildingServiceTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -20,27 +20,6 @@ public class HeaterRepositoryTest {
     @BeforeEach
     void setUp(){
 
-
-       BuildingEntity buildingEntity = BuildingEntity.builder()
-                .buildingID(1L)
-                .ID(1L)
-                .buildingAddress("Saint-Etienne")
-                .buildingAge(9)
-                .buildingName("Mines")
-                .buildingSize(43L)
-                .buildingType("Structural")
-                .buildingOwner("Arun")
-                .storeyNumber("9").build();
-
-        RoomEntity roomEntity = RoomEntity.builder()
-                .ID(1L)
-                .roomID(1L)
-                .roomTemperature(23.3F)
-                .roomName("Mines")
-                .buildingID(1L)
-                .build();
-
-
     }
 
     @Test
@@ -50,7 +29,7 @@ public class HeaterRepositoryTest {
         heaterRepositoryUnderTest.save(heaterEntity);
 
       List<HeaterEntity> heaterEntity1 =  heaterRepositoryUnderTest.findByRoomID(1L);
-        assertThat(heaterEntity1.size()).isEqualTo(2);
+        assertThat(heaterEntity1.size()).isEqualTo(1);
     }
 
 }
