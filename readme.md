@@ -56,12 +56,22 @@ Here I added layer of security for authorization and authentication
 - For USER -  only right to view the data
   ![ScreenShot](images/forbidden.PNG)
 
+##  ADMIN credentials  - 
+- [ ] username - "admin"
+- [ ] password - "12345"
+
+## USER credentials
+- [ ] username - "user"
+- [ ] password - "12345"
+
 ## Controller
 
 ### Building Controller
 ![ScreenShot](images/buildingcontorller.PNG)
+![ScreenShot](images/building.PNG)
 ### Room Controller
 ![ScreenShot](images/roomcontroller.PNG)
+![ScreenShot](images/room.PNG)
 ### Heater Controller 
 ![ScreenShot](images/heatercontroller.PNG)
 
