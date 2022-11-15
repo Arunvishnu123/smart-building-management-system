@@ -27,6 +27,7 @@ by calling the username and roles to be assigned
 - After login, a access token ( jwt token) is send  as response. and user need to give this access code via swagger ui.
 and the application will decide the right of user based on this access token
 - After passing the access token, user work with the application.
+- Format to pass access token  -  "Bearer "accesstoken""
 - ![ScreenShot](images/login.PNG)
 - As we said previously, we have two roles , "ADMIN" and "USER"
 - "USER" is only allowed for "GET" method
