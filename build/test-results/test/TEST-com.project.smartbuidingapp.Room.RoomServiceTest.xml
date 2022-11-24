@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.project.smartbuidingapp.Room.RoomServiceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-11-15T21:35:24" hostname="DESKTOP-54COFT6" time="0.062">
-  <properties/>
-  <testcase name="canGetRoomList()" classname="com.project.smartbuidingapp.Room.RoomServiceTest" time="0.059"/>
-  <testcase name="canGetRoomByBuildingID()" classname="com.project.smartbuidingapp.Room.RoomServiceTest" time="0.002"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
