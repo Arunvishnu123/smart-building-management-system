@@ -1,4 +1,4 @@
-# Smart Building Management - Front-end
+# Smart Building Management - Back-end
 For testing the APIs go to this link
 - http://arun.raveendrannairsheela.cleverapps.io/swagger-ui/index.html#/
 - Name -  Arun Raveendran Nair Sheela
